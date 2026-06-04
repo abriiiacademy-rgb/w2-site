@@ -23,9 +23,49 @@
   <!-- ============================================================= -->
 
   <!-- ============================================================= -->
-  <!--  GOOGLE TAG (gtag.js / GTM) — colar o código aqui             -->
-  <!-- <script>  ...Google tag...  </script>                          -->
+  <!--  GOOGLE TAG + CONVERSÃO DE WHATSAPP                            -->
+  <!--  >>> PREENCHA OS 3 VALORES ABAIXO COM OS IDS REAIS DO GOOGLE   -->
+  <!--  Enquanto estiverem em branco, nada é carregado (sem erro).    -->
   <!-- ============================================================= -->
+  <script>
+    (function () {
+      // ============ CONFIG — cole os IDs do Google aqui ============
+      var GA4_ID  = '';            // ex.: 'G-XXXXXXXXXX'  (Google Analytics 4)
+      var GADS_ID = '';            // ex.: 'AW-123456789'  (Google Ads)
+      var GADS_CONVERSION_LABEL = '';  // ex.: 'abcDEF12gh'  (rótulo da conversão "clique no WhatsApp")
+      // =============================================================
+
+      var primaryId = GA4_ID || GADS_ID;
+      if (primaryId) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + primaryId;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        if (GA4_ID)  gtag('config', GA4_ID);
+        if (GADS_ID) gtag('config', GADS_ID);
+      }
+
+      // Dispara conversão em qualquer clique de WhatsApp (botões, flutuante, rodapé)
+      function trackWhatsApp() {
+        if (typeof window.gtag !== 'function') return;
+        if (GA4_ID) {
+          gtag('event', 'generate_lead', { method: 'whatsapp', page_path: location.pathname });
+        }
+        if (GADS_ID && GADS_CONVERSION_LABEL) {
+          gtag('event', 'conversion', { send_to: GADS_ID + '/' + GADS_CONVERSION_LABEL });
+        }
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('a[href*="wa.me/"]');
+        for (var i = 0; i < links.length; i++) {
+          links[i].addEventListener('click', trackWhatsApp);
+        }
+      });
+    })();
+  </script>
 
   <!-- Favicon = marca W2 oficial -->
   <link rel="icon" type="image/png" href="assets/logo-w2.png" />

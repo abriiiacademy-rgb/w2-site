@@ -30,9 +30,9 @@
   <script>
     (function () {
       // ============ CONFIG — cole os IDs do Google aqui ============
-      var GA4_ID  = '';            // ex.: 'G-XXXXXXXXXX'  (Google Analytics 4)
-      var GADS_ID = '';            // ex.: 'AW-123456789'  (Google Ads)
-      var GADS_CONVERSION_LABEL = '';  // ex.: 'abcDEF12gh'  (rótulo da conversão "clique no WhatsApp")
+      var GA4_ID  = '';                            // (pendente) ex.: 'G-XXXXXXXXXX'  (Google Analytics 4)
+      var GADS_ID = 'AW-18208006204';              // Google Ads
+      var GADS_CONVERSION_LABEL = 'TGAzCNrnkrkcELzAoOpD';  // rótulo da conversão "clique no WhatsApp"
       // =============================================================
 
       var primaryId = GA4_ID || GADS_ID;
@@ -51,9 +51,9 @@
       // Dispara conversão em qualquer clique de WhatsApp (botões, flutuante, rodapé)
       function trackWhatsApp() {
         if (typeof window.gtag !== 'function') return;
-        if (GA4_ID) {
-          gtag('event', 'generate_lead', { method: 'whatsapp', page_path: location.pathname });
-        }
+        // Evento de lead (GA4 quando o G- estiver configurado; já fica observável no dataLayer)
+        gtag('event', 'generate_lead', { method: 'whatsapp', page_path: location.pathname });
+        // Conversão Google Ads
         if (GADS_ID && GADS_CONVERSION_LABEL) {
           gtag('event', 'conversion', { send_to: GADS_ID + '/' + GADS_CONVERSION_LABEL });
         }

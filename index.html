@@ -61,6 +61,8 @@
           gtag('event', 'conversion', { send_to: GADS_ID + '/' + GADS_CONVERSION_LABEL });
         }
       }
+      // Exposta globalmente para que outras ações (ex.: envio do formulário) também contem conversão
+      window.trackWhatsApp = trackWhatsApp;
       document.addEventListener('DOMContentLoaded', function () {
         var links = document.querySelectorAll('a[href*="wa.me/"]');
         for (var i = 0; i < links.length; i++) {
@@ -775,6 +777,8 @@
         '*Cidade:* ' + encodeURIComponent(f.cidade.value) + '%0A' +
         '*Data/hora preferida:* ' + encodeURIComponent(f.datahora.value) + '%0A' +
         '*Projeto:* ' + encodeURIComponent(f.resumo.value || '—');
+      // Dispara a conversão (Google Ads + GA4) ANTES de abrir o WhatsApp
+      if (typeof window.trackWhatsApp === 'function') window.trackWhatsApp();
       window.open('https://wa.me/' + WHATS + '?text=' + msg, '_blank');
       modal.close();
     });

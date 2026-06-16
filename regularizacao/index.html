@@ -206,6 +206,10 @@
     .arco-bg svg { width: 100%; height: 100%; display: block; }
     .arco-bg svg [data-arch] { fill: none; stroke: currentColor; stroke-width: 4; stroke-linejoin: round; }
     .arco-bg svg [data-mtn] { fill: currentColor; }
+    /* Marca grande "vazando" pelas bordas (somente seções de fundo escuro) */
+    .arco-bg.edge { top: 50%; transform: translateY(-50%); width: 480px; height: 450px; opacity: .08; }
+    .arco-bg.edge-left { left: -185px; }
+    .arco-bg.edge-right { right: -185px; }
     .wrap, .hero-content, .head { position: relative; z-index: 1; }
 
     /* ===================== HERO ===================== */
@@ -486,9 +490,6 @@
 
   <!-- ===================== O PROBLEMA ===================== -->
   <section class="problema">
-    <div class="arco-bg" style="top:36px; right:3%; width:230px; height:265px;">
-      <svg viewBox="26 42 68 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path data-arch d="M34 98 V54 a26 26 0 0 1 52 0 V98 Z"/><path data-mtn d="M34 98 L52 64 L62 76 L76 50 L86 98 Z"/></svg>
-    </div>
     <div class="wrap">
       <span class="eyebrow">O que está em jogo</span>
       <h2>Por que a regularização<br>não pode esperar</h2>
@@ -589,9 +590,8 @@
 
   <!-- ===================== CTA FINAL ===================== -->
   <section class="cta">
-    <div class="arco-bg" style="top:50%; right:6%; transform:translateY(-50%); width:260px; height:300px; opacity:0.10; color:#F3ECE0;">
-      <svg viewBox="26 42 68 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path data-arch d="M34 98 V54 a26 26 0 0 1 52 0 V98 Z"/><path data-mtn d="M34 98 L52 64 L62 76 L76 50 L86 98 Z"/></svg>
-    </div>
+    <div class="arco-bg edge edge-left" style="color:#F3ECE0;"><svg viewBox="26 42 68 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path data-arch d="M34 98 V54 a26 26 0 0 1 52 0 V98 Z"/><path data-mtn d="M34 98 L52 64 L62 76 L76 50 L86 98 Z"/></svg></div>
+    <div class="arco-bg edge edge-right" style="color:#F3ECE0;"><svg viewBox="26 42 68 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path data-arch d="M34 98 V54 a26 26 0 0 1 52 0 V98 Z"/><path data-mtn d="M34 98 L52 64 L62 76 L76 50 L86 98 Z"/></svg></div>
     <div class="wrap">
       <span class="eyebrow creme">Resposta em minutos</span>
       <h2>Pronto pra resolver?</h2>

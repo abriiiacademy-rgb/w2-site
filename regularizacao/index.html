@@ -199,10 +199,13 @@
     .arco-bg {
       position: absolute;
       pointer-events: none;
-      opacity: 0.06;
+      opacity: 0.08;
       z-index: 0;
+      color: #A4231C;
     }
     .arco-bg svg { width: 100%; height: 100%; display: block; }
+    .arco-bg svg [data-arch] { fill: none; stroke: currentColor; stroke-width: 4; stroke-linejoin: round; }
+    .arco-bg svg [data-mtn] { fill: currentColor; }
     .wrap, .hero-content, .head { position: relative; z-index: 1; }
 
     /* ===================== HERO ===================== */
@@ -483,8 +486,8 @@
 
   <!-- ===================== O PROBLEMA ===================== -->
   <section class="problema">
-    <div class="arco-bg" style="top:-80px; right:-120px; width:460px; height:520px;">
-      <svg viewBox="0 0 120 140"><path d="M10 138 V60 a50 50 0 0 1 100 0 V138" fill="none" stroke="#A4231C" stroke-width="3"/></svg>
+    <div class="arco-bg" style="top:36px; right:3%; width:230px; height:265px;">
+      <svg viewBox="26 42 68 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path data-arch d="M34 98 V54 a26 26 0 0 1 52 0 V98 Z"/><path data-mtn d="M34 98 L52 64 L62 76 L76 50 L86 98 Z"/></svg>
     </div>
     <div class="wrap">
       <span class="eyebrow">O que está em jogo</span>
@@ -586,8 +589,8 @@
 
   <!-- ===================== CTA FINAL ===================== -->
   <section class="cta">
-    <div class="arco-bg" style="bottom:-160px; left:50%; transform:translateX(-50%); width:620px; height:520px; opacity:0.08;">
-      <svg viewBox="0 0 120 120"><path d="M10 118 V52 a50 50 0 0 1 100 0 V118" fill="none" stroke="#FFFFFF" stroke-width="3"/></svg>
+    <div class="arco-bg" style="top:50%; right:6%; transform:translateY(-50%); width:260px; height:300px; opacity:0.10; color:#F3ECE0;">
+      <svg viewBox="26 42 68 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path data-arch d="M34 98 V54 a26 26 0 0 1 52 0 V98 Z"/><path data-mtn d="M34 98 L52 64 L62 76 L76 50 L86 98 Z"/></svg>
     </div>
     <div class="wrap">
       <span class="eyebrow creme">Resposta em minutos</span>
